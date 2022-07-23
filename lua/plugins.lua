@@ -47,8 +47,6 @@ return packer.startup(function(use)
 	use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
 
 	-- Colorschemes
-	use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-	use "lunarvim/darkplus.nvim"
 	use "folke/tokyonight.nvim"
 
 	-- comment
@@ -58,17 +56,13 @@ return packer.startup(function(use)
 
 	--endgame pluggins
 	use "lukas-reineke/indent-blankline.nvim"
-	use {
-		'goolord/alpha-nvim',
-		requires = { 'kyazdani42/nvim-web-devicons' },
-		config = function()
-			require 'alpha'.setup(require 'alpha.themes.startify'.config)
-		end
-	}
-	use 'lewis6991/impatient.nvim'
 	use "folke/which-key.nvim"
-	 use "folke/which-key.nvim"
+	use "windwp/nvim-ts-autotag"
 
+	-- endgame endgame
+	use {
+		"ray-x/lsp_signature.nvim",
+	}
 
 	--bufferline
 	use "akinsho/bufferline.nvim"
@@ -79,8 +73,6 @@ return packer.startup(function(use)
 
 	use "unblevable/quick-scope"
 	use "wakatime/vim-wakatime"
-	use "justinmk/vim-sneak"
-	use "yardnsm/vim-import-cost"
 
 	--nvim tree
 	use "kyazdani42/nvim-web-devicons"
@@ -89,14 +81,11 @@ return packer.startup(function(use)
 	-- cmp plugins
 	use "hrsh7th/nvim-cmp" -- The completion plugin
 	use "hrsh7th/cmp-buffer" -- buffer completions
-	use "hrsh7th/cmp-path" -- path completions
-	use "hrsh7th/cmp-cmdline" -- cmdline completions
 	use "saadparwaiz1/cmp_luasnip" -- snippet completions
 	use "hrsh7th/cmp-nvim-lsp"
 
 	-- snippets
 	use "L3MON4D3/LuaSnip" --snippet engine
-	use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
 	-- LSP
 	use "neovim/nvim-lspconfig" -- enable LSP
@@ -111,14 +100,8 @@ return packer.startup(function(use)
 	-- Treesitter
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", }
 	use "p00f/nvim-ts-rainbow"
-	use "nvim-treesitter/playground"
 
-	use { 'David-Kunz/cmp-npm', requires = { 'nvim-lua/plenary.nvim' } }
 	use "akinsho/toggleterm.nvim"
-
-	use "hrsh7th/cmp-nvim-lua"
-
-	use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
 
 
 	-- Automatically set up your configuration after cloning packer.nvim

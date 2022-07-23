@@ -21,7 +21,7 @@ vim.opt.showtabline = 2
 vim.opt.termguicolors = true
 vim.opt.numberwidth = 2
 vim.opt.wrap = true
-vim.opt.mouse= "a"
+vim.opt.mouse = "a"
 vim.opt.hidden = true
 vim.opt.hlsearch = true
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
@@ -31,10 +31,14 @@ vim.opt.title = true -- set the title of window to the value of the titlestring
 vim.opt.titlestring = "%<%F%=%l/%L - nvim"
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.updatetime = 300
+vim.opt.timeoutlen = 100
 --vim.opt.cursorline = true
 vim.opt.spell = false
 vim.opt.spelllang = "en"
 
+vim.cmd [[set backspace=indent,eol,start]]
+
+-- backspace
 
 
 -- keymaps
@@ -73,12 +77,34 @@ keymap("i", "jk", "<ESC>", opts)
 keymap("i", "kj", "<ESC>", opts)
 keymap("i", "zx", "<ESC>", opts)
 keymap("i", "xz", "<ESC>", opts)
+keymap("i", "JK", "<ESC>", opts)
+keymap("i", "KJ", "<ESC>", opts)
+keymap("i", "ZX", "<ESC>", opts)
+keymap("i", "XZ", "<ESC>", opts)
 
 
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+-- keymap("n","<BS>","<Esc>d?\\S?e1<CR>i",opts)
+
+-- vim.api.nvim_exec(
+--     [[function! HungryBackspaceWrapper()
+--         let column = col('.')
+--         return "\<Esc>:echo 'it works'"
+--         if column == 1
+--             return "\<Esc>kJxi"
+--         elseif column >= 2 && getline('.')[column - 2] =~ '\S'
+--             return "\<BS>"
+--         else
+--             return "\<Esc>d?\\S?e1\<CR>i"
+--         endif
+--         endfunction
+--     map <BS> <c-r>=HungryBackSpaceWrapper()<CR>]],false
+-- )
+
+
 
 
 -- Move text up and down
@@ -96,5 +122,3 @@ keymap("x", "<A-Up>", ":move '<-2<CR>gv-gv", opts)
 
 keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
-
-
