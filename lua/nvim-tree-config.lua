@@ -21,18 +21,6 @@ vim.g.nvim_tree_icons = {
 	},
 }
 
-require('lualine').setup({
-	sections = {
-		lualine_a = {
-			{
-				'buffers',
-				show_filename_only = false, -- Shows shortened relative path when set to false.
-				hide_filename_extension = false, -- Hide filename extension when set to true.
-			}
-		}
-	}
-})
-
 
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
@@ -54,6 +42,7 @@ nvim_tree.setup {
 	disable_netrw = true,
 	hijack_netrw = true,
 	open_on_setup = false,
+	highlight_focused_file = true,
 	ignore_ft_on_setup = {
 		"startify",
 		"dashboard",

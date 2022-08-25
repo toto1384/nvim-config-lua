@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  Colorschemes = {
+    loaded = true,
+    path = "/Users/alex/.local/share/nvim/site/pack/packer/start/Colorschemes",
+    url = "https://github.com/LunarVim/Colorschemes"
+  },
   ["Comment.nvim"] = {
     loaded = true,
     path = "/Users/alex/.local/share/nvim/site/pack/packer/start/Comment.nvim",
@@ -78,6 +83,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/alex/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
+  },
+  ["blamer.nvim"] = {
+    loaded = true,
+    path = "/Users/alex/.local/share/nvim/site/pack/packer/start/blamer.nvim",
+    url = "https://github.com/APZelos/blamer.nvim"
   },
   ["bufferline.nvim"] = {
     loaded = true,
@@ -113,11 +123,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/alex/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
-  },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "/Users/alex/.local/share/nvim/site/pack/packer/start/lualine.nvim",
-    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["nlsp-settings.nvim"] = {
     loaded = true,
@@ -218,6 +223,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/alex/.local/share/nvim/site/pack/packer/start/vim-bbye",
     url = "https://github.com/moll/vim-bbye"
+  },
+  ["vim-import-cost"] = {
+    loaded = true,
+    path = "/Users/alex/.local/share/nvim/site/pack/packer/start/vim-import-cost",
+    url = "https://github.com/yardnsm/vim-import-cost"
+  },
+  ["vim-smoothie"] = {
+    loaded = true,
+    path = "/Users/alex/.local/share/nvim/site/pack/packer/start/vim-smoothie",
+    url = "https://github.com/psliwka/vim-smoothie"
   },
   ["vim-wakatime"] = {
     loaded = true,

@@ -32,14 +32,21 @@ vim.opt.titlestring = "%<%F%=%l/%L - nvim"
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.updatetime = 300
 vim.opt.timeoutlen = 100
---vim.opt.cursorline = true
+vim.opt.cursorline = true
 vim.opt.spell = false
 vim.opt.spelllang = "en"
 
 vim.cmd [[set backspace=indent,eol,start]]
 
--- backspace
 
+vim.cmd [[nnoremap <expr> <Up> (v:count == 0 ? 'gk' : 'k')]]
+vim.cmd [[nnoremap <expr> <Down> (v:count == 0 ? 'gj' : 'j')]]
+
+
+
+-- backspace
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- keymaps
 local opts = { noremap = true, silent = true }
@@ -82,6 +89,14 @@ keymap("i", "KJ", "<ESC>", opts)
 keymap("i", "ZX", "<ESC>", opts)
 keymap("i", "XZ", "<ESC>", opts)
 
+
+-- disable arrows and set virtual lines
+
+-- keymap('n', '<Up>', '<Nop>', opts)
+-- keymap('n', '<Down>', '<Nop>', opts)
+-- keymap('n', '<Left>', '<Nop>', opts)
+-- keymap('n', '<Right>', '<Nop>', opts)
+--
 
 -- Visual --
 -- Stay in indent mode

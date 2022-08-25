@@ -48,10 +48,16 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	use "folke/tokyonight.nvim"
+	use "LunarVim/Colorschemes"
+
 
 	-- comment
 	use "numToStr/Comment.nvim" -- Easily comment stuff
 	use "JoosepAlviste/nvim-ts-context-commentstring"
+
+	-- git blamer
+	use "APZelos/blamer.nvim"
+
 
 
 	--endgame pluggins
@@ -60,13 +66,18 @@ return packer.startup(function(use)
 	use "windwp/nvim-ts-autotag"
 
 	-- endgame endgame
-	use {
-		"ray-x/lsp_signature.nvim",
-	}
+	use "ray-x/lsp_signature.nvim"
+	use "psliwka/vim-smoothie"
 
 	--bufferline
 	use "akinsho/bufferline.nvim"
 	use "moll/vim-bbye"
+
+	use {
+		"yardnsm/vim-import-cost",
+		run = "npm install --production",
+	}
+
 
 	-- Git
 	use "lewis6991/gitsigns.nvim"
@@ -92,7 +103,7 @@ return packer.startup(function(use)
 	use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 	use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
 	use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-	use "nvim-lualine/lualine.nvim"
+	--[[ use "nvim-lualine/lualine.nvim" ]]
 
 	-- Telescope
 	use "nvim-telescope/telescope.nvim"

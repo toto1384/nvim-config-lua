@@ -10,7 +10,8 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup {
 	debug = true,
 	sources = {
-		diagnostics.eslint_d,
+		diagnostics.eslint,
+		diagnostics.tsc,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

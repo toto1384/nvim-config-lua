@@ -11,14 +11,42 @@ require('which-key-config')
 require("plugins")
 
 
+
 -- colorscheme
 vim.g.tokyonight_style = "night"
-vim.cmd "colorscheme tokyonight"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- vim.cmd [[ highlight QuickScopePrimary guifg='#ff0505' gui=underline ctermfg=155 cterm=underline ]]
 -- vim.cmd [[ highlight QuickScopeSecondary guifg='#990202' gui=underline ctermfg=81 cterm=underline ]]
-vim.highlight.create('QuickScopePrimary', {ctermfg=155, guifg="#ff0505"}, false)
-vim.highlight.create('QuickScopePrimary', {ctermfg=81, guifg="#990202"}, false)
+function Reload()
+    vim.cmd "colorscheme tokyonight"
+    vim.highlight.create('QuickScopePrimary', { ctermfg = 155, guifg = "#ff0505" }, false)
+    vim.highlight.create('QuickScopeSecondary', { ctermfg = 81, guifg = "#990202" }, false)
+    vim.cmd "set guifont=FuraMono\\ Nerd\\ Font"
+    vim.cmd "let g:neovide_refresh_rate=60"
+    vim.cmd "let g:neovide_refresh_rate_idle=60"
+    vim.cmd "let g:neovide_cursor_animation_length=0"
+    vim.cmd "let g:neovide_cursor_trail_length=0"
+    vim.cmd "let g:neovide_cursor_antialiasing=v:false"
+    vim.cmd "hi CursorLineNr term=bold ctermfg=11 gui=bold guifg=Yellow"
+end
+
+vim.cmd [[
+augroup import_cost_auto_run
+  autocmd!
+  autocmd InsertLeave *.js,*.jsx,*.ts,*.tsx ImportCost
+  autocmd BufEnter *.js,*.jsx,*.ts,*.tsx ImportCost
+augroup END
+]]
+
+
+Reload()
+
+
+
+vim.cmd "let g:blamer_enabled = 1"
+vim.cmd "let g:blamer_relative_time = 1"
+
 
 --other configs
 require("indent_blankline").setup {
@@ -30,11 +58,11 @@ require("indent_blankline").setup {
 require "lsp_signature".setup({
     bind = true, -- This is mandatory, otherwise border config won't get registered.
     handler_opts = {
-      border = "rounded"
+        border = "rounded"
     },
     floating_window = false,
     hint_enable = true,
-  })
+})
 
 
 
@@ -55,6 +83,8 @@ local function firstToUpper(str)
     return (str:gsub("^%l", string.upper))
 end
 
+
+
 ls.add_snippets(nil, {
     all = {
         postfix(".st", {
@@ -70,12 +100,16 @@ ls.add_snippets(nil, {
                 return "[" .. parent.snippet.env.POSTFIX_MATCH .. "]"
             end, {}),
         }),
-        snip({
-            trig = "dattt",
-            namr = "Date",
-            dscr = "Date in the form of YYYY-MM-DD",
-        }, {
-            text("datt")
+        postfix(".clg", {
+            f(function(_, parent)
+                return "console.log(" .. parent.snippet.env.POSTFIX_MATCH .. ")"
+            end, {}),
         }),
+        postfix(".clgs", {
+            f(function(_, parent)
+                return "console.log(\"" .. parent.snippet.env.POSTFIX_MATCH .. "\")"
+            end, {}),
+        }),
+        snip("useEffect", { text("useEffect(()=>{", "},[])") })
     },
 })
